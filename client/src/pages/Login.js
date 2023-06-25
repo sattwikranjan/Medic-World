@@ -1,8 +1,8 @@
 import React from "react";
-import { Form, Input, message } from "antd";
-import axios from "axios";
 import "../styles/RegisterStyles.css";
+import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
