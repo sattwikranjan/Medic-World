@@ -54,7 +54,7 @@ const Layout = ({ children }) => {
                   }}
                   
                   >
-                  <i class="fa-solid fa-bell"></i>
+                  <i className="fa-solid fa-bell"></i>
                 </Badge>
 
                 <Link to="/profile">{user?.name}</Link>
