@@ -1,0 +1,56 @@
+const mongoose = require("mongoose");
+
+const doctorSchema = new mongoose.Schema(
+  {
+    usedId: {
+      type: String,
+    },
+    firstName: {
+      type: String,
+      required: [true, "First name is required"],
+    },
+    lastName: {
+      type: String,
+      required: [true, "Last name is required"],
+    },
+    phone: {
+      type: String,
+      required: [true, "Phone No is required"],
+    },
+    email: {
+      type: String,
+      required: [true, "Email id is required"],
+    },
+    website: {
+      type: String,
+    },
+    address: {
+      type: String,
+      required: [true, "Address is required"],
+    },
+    specialization: {
+      type: String,
+      required: [true, "Specialization is required"],
+    },
+    experience: {
+      type: String,
+      required: [true, "Experience is required"],
+    },
+    feesperCunsaltation: {
+      type: Number,
+      required: [true, "fee is required"],
+    },
+    status: {
+      type: String,
+      default: "pending",
+    },
+    timings: {
+      type: Object,
+      required: [true, "timing is required"],
+    },
+  },
+  { timestamps: true }
+);
+
+const doctorModel = mongoose.model("doctors", doctorSchema);
+module.exports = doctorModel;
