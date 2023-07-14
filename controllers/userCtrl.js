@@ -109,55 +109,52 @@ const applyDoctorController = async (req, res) => {
 };
 
 //notification ctrl
-const getAllNotificationController = async(req,res)=>{
-  try{
-    const user =await userModel.findOne({_id:req.body.userId});
-    const seennotification=user.seennotification;
-    const notification=user.notification;
+const getAllNotificationController = async (req, res) => {
+  try {
+    const user = await userModel.findOne({ _id: req.body.userId });
+    const seennotification = user.seennotification;
+    const notification = user.notification;
     seennotification.push(...notification);
-    user.notification=[];
-    user.seennotification=notification;
-    const updatedUser=await user.save();
+    user.notification = [];
+    user.seennotification = notification;
+    const updatedUser = await user.save();
     res.status(200).send({
-      success:true,
-      message:'all notification marked as read',
-      data:updatedUser,
+      success: true,
+      message: "all notification marked as read",
+      data: updatedUser,
     });
-  }catch(error)
-  {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
     res.status(500).send({
-      message:'Error in notification',
-      success:false,
+      message: "Error in notification",
+      success: false,
       error,
     });
   }
 };
 
 //delete notifications
-const deleteAllNotificationController=async(req,res)=>{
+const deleteAllNotificationController = async (req, res) => {
   try {
-    const user =await userModel.findOne({_id:req.body.userId});
-    user.notification={}
-    user.seennotification={}
-    const updatedUser=await user.save()
-    updatedUser.password=undefined;
+    const user = await userModel.findOne({ _id: req.body.userId });
+    user.notification = [];
+    user.seennotification = [];
+    const updatedUser = await user.save();
+    updatedUser.password = undefined;
     res.status(200).send({
-      success:true,
-      message:'Notification Deleted Successfully',
-      data:updatedUser,
-    })
-
+      success: true,
+      message: "Notification Deleted Successfully",
+      data: updatedUser,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      success:false,
-      message:'unable to delete notifications',
+      success: false,
+      message: "unable to delete notifications",
       error,
     });
   }
-
-}
+};
 
 module.exports = {
   loginController,
