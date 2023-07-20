@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const doctorModel = require("../models/doctorModel");
 const appointmentModel = require("../models/appointmentModel");
+const moment =require("moment");
+
 //register callback
 const registerController = async (req, res) => {
   try {
@@ -179,8 +181,9 @@ const getAllDocotrsController = async (req, res) => {
 //book appointment
 const bookeAppointmentController = async (req, res) => {
   try {
+    req.body.date= moment(req.body.date,"DD-MM-YYYY").toISOString();
+    req.body.time=moment(req.body.time,"HH-mm").toISOString();
     req.body.status = "pending";
-
     const newAppointment = new appointmentModel(req.body);
     await newAppointment.save();
     const user = await userModel.findOne({ _id: req.body.doctorInfo.userId });
