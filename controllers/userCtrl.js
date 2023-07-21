@@ -245,14 +245,14 @@ const bookingAvailabilityController=async(req,res)=>{
 }
 const userAppointmentsController=async(req,res)=>{
   try {
-    const appointments = await appointmentModel.find({userId:req.body.userId})
+    const appointments = await appointmentModel.find({userId:req.body.userId,});
     res.status(200).send({
-      success:false,
+      success:true,
       message:"users Appointments Fetch Successfully",
       data:appointments,
     });
   } catch (error) {
-      console.log(error)
+      console.log(error);
       res.status(500).send({
          success:false,
          error,
