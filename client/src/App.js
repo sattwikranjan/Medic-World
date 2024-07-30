@@ -14,6 +14,7 @@ import Profile from "./pages/doctor/Profile";
 import BookingPage from "./pages/BookingPage";
 import Appointments from "./pages/Appointments";
 import DoctorAppointments from "./pages/doctor/DoctorAppointments";
+import UserProfile from "./pages/Profile";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -23,8 +24,6 @@ function App() {
           <Spinner />
         ) : (
           <Routes>
-            
-
             <Route
               path="/apply-doctor"
               element={
@@ -59,7 +58,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/admin/doctors"
               element={
@@ -101,11 +107,11 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="/doctor-appointments"
               element={
                 <ProtectedRoute>
-                  <DoctorAppointments/>
+                  <DoctorAppointments />
                 </ProtectedRoute>
               }
             />
