@@ -44,7 +44,7 @@ const Login = () => {
           <Input type="password" required />
         </Form.Item>
         <Link to="/register" className="m-2">
-          Already a user Register here
+          Not a user Register here
         </Link>
         <button className="btn btn-primary" type="submit">
           Login
